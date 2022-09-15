@@ -26,6 +26,21 @@ FROM docker.io/library/debian:buster-20220912
 RUN \
   apt-get update \
   && \
+  apt-get install -y --no-install-recommends \
+    ca-certificates=20200601~deb10u2 \
+    musl=1.1.21-2 \
+    xz-utils=5.2.4-1+deb10u1 \
   rm -rf /var/lib/apt/lists/*
 
+# Install confd
 COPY --from=confd-builder /usr/local/bin/confd /usr/local/bin/confd
+
+# add s6 overlay
+ARG OVERLAY_VERSION="v2.2.0.3"
+ARG OVERLAY_ARCH="amd64"
+ADD https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_ARCH}-installer /tmp/
+RUN chmod +x /tmp/s6-overlay-${OVERLAY_ARCH}-installer && /tmp/s6-overlay-${OVERLAY_ARCH}-installer / && rm /tmp/s6-overlay-${OVERLAY_ARCH}-installer
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+
+# set command
+CMD ["/init"]
