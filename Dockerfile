@@ -39,7 +39,7 @@ RUN \
   chmod +x \
     /tmp/s6-overlay-installer \
   && \
-  /tmp/s6-overlay-installer \
+  /tmp/s6-overlay-installer / \
   && \
   rm /tmp/s6-overlay-installer
 
