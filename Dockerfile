@@ -13,8 +13,6 @@ RUN \
     gnupg2=2.2.12-1+deb10u2 \
     musl=1.1.21-2 \
     xz-utils=5.2.4-1+deb10u1 \
-
-
   && \
   rm -rf /var/lib/apt/lists/*
 
