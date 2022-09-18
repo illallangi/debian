@@ -8,8 +8,13 @@ RUN \
   apt-get install -y --no-install-recommends \
     ca-certificates=20200601~deb10u2 \
     curl=7.64.0-4+deb10u3 \
+    gnupg=2.2.12-1+deb10u2 \
+    gnupg1=1.4.23-1 \
+    gnupg2=2.2.12-1+deb10u2 \
     musl=1.1.21-2 \
     xz-utils=5.2.4-1+deb10u1 \
+
+
   && \
   rm -rf /var/lib/apt/lists/*
 
