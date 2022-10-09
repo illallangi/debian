@@ -1,5 +1,5 @@
 # Main image
-FROM docker.io/library/debian:buster-20220912
+FROM docker.io/library/debian:buster-20221004
 
 # Install packages
 RUN \
